@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Sermons\SermonController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\SocialController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,9 +37,6 @@ Route::group(['prefix' => 'sermons'], function(){
 
 // Resource
 Route::resource('news', NewsController::class);
-
-
-
 
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
