@@ -1,0 +1,72 @@
+ What is Model View Controller?
+ it is an architeture used to simplfiy things, divide their code into three parts: 
+ 1- View: that contain the theme.
+ 2- Controller: the logic that control data (Acquire and mainpulate data) and present data.
+ 3- Model: the part of the project that is repsonisble of database. Equivilant to a table in database.
+ Tables when used as models resemble object in oop.
+ ------------------------------------------
+ .env file: is responsible for linking with database
+ -------------------------------------------
+ What is composer?
+ composer is a dependency manager. composer install or composer update 
+ ---------------------------------------------
+.gitignore: this file contains the name of all the files that won't uploaded during git
+-------------------------------------------------------------------
+routes:
+define the form of your routes, has many forms 
+get, post, put, delete
+
+------------------------
+To easily access routes from views, I recommend to use |->name()| method for routes.
+and in views. type ' {{route('route_name')}} '
+------------------------------------------------------------
+middleware: is a tool used to control access of a specific route
+you can make a middleware by:
+1- Adding |->middleware('your_middleware')| to the end of your route
+2- Adding | $this->middleware('your_middleware')| to your controller constructor
+---------------------
+Resource Route and Resource Controller: Basically it is a normal control or view that have everything you 
+need like index, create, read, and delete; basically (CRUD)
+------------------
+Pass one variable from route/controller to view:
+return view('your_view')->with('var1', 'value1');
+
+Pass a list of variables from route/controller to view:
+return view('your_view')->with(['var1'='value1','var2'=>'value2']);
+------------------------------------------------------
+Eloquent model is used to access the database in oop manner.
+all its method could be accessed staticly. 
+-----------------
+Seeding 
+ - php artisan db: seed // will only seed your database with one record
+ ------------------------------------------------------
+Blade inheritance
+--------
+@extends('your master layout');
+    @section('section_name')
+        // into this section, you put your specified content.
+    @stop
+--------
+@yield('section_name')
+-----------------------------------------------------------
+Control structures (if, else, switch, foreach)... how all this can be done within blade files.
+@if()
+@elseif()
+@else
+@endif
+----------------
+@foreach()
+@endforeach
+----------------------------------------------------------------
+Login and register..email password...email verification
+    Mobile authentication and email authentication
+    while maintainning the user table
+
+    Email verification
+    1- we need mail server that we can send messages from.
+    2- setup your mail server inside your .env file.
+    3- Into your users model, implement MustVerifyEmail 
+    4- Implement a middleware called (verified)...
+    5- 
+
+
