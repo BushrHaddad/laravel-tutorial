@@ -37,12 +37,19 @@ Route::group(['prefix' => 'sermons'], function(){
 
 
 // Resource Group
-Route::group(['prefix' => 'resources'], function(){
-    Route::get('', [ResourceController::class, 'index'])->name('sermons');
-    Route::get('/create', [ResourceController::class, 'create']);
-    Route::get('/new', [ResourceController::class, 'new']);
-    Route::post('/store', [ResourceController::class, 'store'])->name('resource-store');
-});
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){
+        
+        Route::group(['prefix' => 'resources'], function(){
+            Route::get('', [ResourceController::class, 'index'])->name('sermons');
+            Route::get('/create', [ResourceController::class, 'create']);
+            Route::get('/new', [ResourceController::class, 'new']);
+            Route::post('/store', [ResourceController::class, 'store'])->name('resource-store');
+        });
+    });
 
 // Login True
 Auth::routes(['verify' => true]);

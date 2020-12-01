@@ -29,27 +29,50 @@
         </style>
     </head>
     <body class="antialiased">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul>
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <li class= "navbar-brand">
+                            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                {{ $properties['native'] }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+
+                
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+
+            </div>
+        </nav>
+
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
 
         <form method="POST" action="{{route('resource-store')}}">
              @csrf
             <div class="form-group">
-                <label for="title">Title</label>
+                <label for="title"> @lang('msgs.title')</label>
                 <input type="text" class="form-control" name="title" placeholder="Enter resource title">
             </div>
 
             <div class="form-group">
-                <label for="preacher">Preacher</label>
+                <label for="preacher"> @lang('msgs.preacher')</label>
                 <input type="text" class="form-control" name="preacher" placeholder="Enter preacher">
             </div>
 
             <div class="form-group">
-                <label for="date">Date</label>
+                <label for="date"> @lang('msgs.date')</label>
                 <input type="text" class="form-control" name="date" placeholder="Enter date">
             </div>
 
 
-            <button type="submit" class="btn btn-primary">Create </button>
+            <button type="submit" class="btn btn-primary">@lang('msgs.create') </button>
         </form>
         </div>
     </body>

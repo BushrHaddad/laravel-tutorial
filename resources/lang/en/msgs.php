@@ -1,7 +1,8 @@
 <?php
 
 return [
-"first" => "first guys",
-"second" => "second guys",
-
+    "title" => "Title",
+    "preacher" => "Preacher",
+    "date" => "Date",
+    "create" => "Create",
 ];
