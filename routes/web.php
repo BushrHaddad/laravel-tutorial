@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Sermons\SermonController;
-use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\SocialController;
 
 
@@ -28,16 +28,23 @@ Route::get('login',function(){
 })->name('login');
 
 
-//Group 
+// Sermons Group
 Route::group(['prefix' => 'sermons'], function(){
     Route::get('', [SermonController::class, 'index'])->name('sermons');
     Route::get('update/{user_id}', [SermonController::class, 'update']);
     Route::get('delete/{user_id}', [SermonController::class, 'delete']);
 });
 
-// Resource
-Route::resource('news', NewsController::class);
 
+// Resource Group
+Route::group(['prefix' => 'resources'], function(){
+    Route::get('', [ResourceController::class, 'index'])->name('sermons');
+    Route::get('/create', [ResourceController::class, 'create']);
+    Route::get('/new', [ResourceController::class, 'new']);
+    Route::post('/store', [ResourceController::class, 'store'])->name('resource-store');
+});
+
+// Login True
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
