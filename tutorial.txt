@@ -92,11 +92,3 @@ To use facebook login:
     3- define your APP_ID, APP_SECRET, and REDIRECT into your .env file.
     4- define your APP_ID, APP_SECRET, and REDIRECT into your config/services.
     
-
-
-
-
-APP ID: 
-App Secret: 
-
-
